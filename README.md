@@ -2,6 +2,8 @@
 
 Companion repo to [this video](https://www.youtube.com/watch?v=budS405GGds).
 
+[![OpenTelemtry transform processor video](https://img.youtube.com/vi/budS405GGds/0.jpg)](https://www.youtube.com/watch?v=budS405GGds)
+
 [Download the OpenTelemetry contrib collector](https://github.com/open-telemetry/opentelemetry-collector-releases/releases) (or bring your own distribution) - as long as it contains the `transform`, `resourcedetection` and `batch` processors.
 
 ## Start the Backend
