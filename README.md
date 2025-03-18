@@ -34,6 +34,4 @@ export OPEN_OBSERVE_KEY=TODO
 ./otelcol-contrib --config=scenario7.yaml
 
 ./otelcol-contrib --config=scenario8.yaml
-
-./otelcol-contrib --config=scenario9.yaml
 ```
