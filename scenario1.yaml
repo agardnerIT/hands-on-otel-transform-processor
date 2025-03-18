@@ -1,0 +1,28 @@
+receivers:
+  filelog:
+    include: /path/to/log/file.log
+
+processors:
+  batch:
+    send_batch_size: 500
+    timeout: 2s
+
+exporters:
+  debug:
+    verbosity: detailed
+
+  otlphttp/openobserve:
+    endpoint: http://localhost:5080/api/default
+    headers: 
+      Authorization: "Basic ${env:OPEN_OBSERVE_KEY}"
+      organization: default
+      stream-name: default
+    tls:
+      insecure: true
+
+service:
+  pipelines:
+    logs:
+      receivers: [filelog]
+      processors: [batch]
+      exporters: [debug, otlphttp/openobserve]
