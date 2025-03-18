@@ -1,0 +1,41 @@
+receivers:
+  filelog:
+    include: /path/to/log/file.log
+    include_file_name: true
+    include_file_path: true
+
+processors:
+  batch:
+    send_batch_size: 500
+    timeout: 2s
+  resourcedetection:
+    detectors: ["system"]
+    system:
+      hostname_sources: ["os"]
+  transform:
+    log_statements:
+      - context: log
+        statements:
+          - set(log.time, Now()) 
+          - set(log.observed_time, Now())
+          - set(log.severity_text, "INFO") where IsMatch(log.severity_text, "")
+
+exporters:
+  debug:
+    verbosity: detailed
+
+  otlphttp/openobserve:
+    endpoint: http://localhost:5080/api/default
+    headers: 
+      Authorization: "Basic ${env:OPEN_OBSERVE_KEY}"
+      organization: default
+      stream-name: default
+    tls:
+      insecure: true
+
+service:
+  pipelines:
+    logs:
+      receivers: [filelog]
+      processors: [resourcedetection, transform, batch]
+      exporters: [debug, otlphttp/openobserve]
