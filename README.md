@@ -17,5 +17,21 @@ Follow the video to find the API token and store as an environment variable call
 
 ```
 export OPEN_OBSERVE_KEY=TODO
-./o
+./otelcol-contrib --config=scenario1.yaml
+
+./otelcol-contrib --config=scenario2.yaml
+
+./otelcol-contrib --config=scenario3.yaml
+
+./otelcol-contrib --config=scenario4.yaml
+
+./otelcol-contrib --config=scenario5.yaml
+
+./otelcol-contrib --config=scenario6.yaml
+
+./otelcol-contrib --config=scenario7.yaml
+
+./otelcol-contrib --config=scenario8.yaml
+
+./otelcol-contrib --config=scenario9.yaml
 ```
